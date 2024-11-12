@@ -1,26 +1,27 @@
 ﻿using System;
+using System.IO;
 
-class MainClass
+class Program
 {
     static void Main(string[] args)
     {
-        int[] arr = new[] { 3, 7, 1, -9, 5 };
-        int[] arr2 = new[] { 1, 2, 3, 4, 5, 6, 9 };
-
-        Console.WriteLine(IsSorted(arr).ToString());
-        Console.WriteLine(IsSorted(arr2).ToString());
-        Console.ReadKey();
-    }
-
-    static bool IsSorted(int[] array)
-    {
-        for (int i = 0; i < array.Length - 1; i++)
+        try
         {
-            if (!(array[i] <= array[i + 1]))
-            {
-                return false;
-            }
+            // читаем весь файл с рабочего стола в строку текста
+            string text = File.ReadAllText("../../../Resources/cdev_Text.txt");
+
+            // Сохраняем символы-разделители в массив
+            char[] delimiters = new char[] { ' ', '\r', '\n' };
+
+            // разбиваем нашу строку текста, используя ранее перечисленные символы-разделители
+            var words = text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            // выводим количество
+            Console.WriteLine(words.Length);
         }
-        return true;
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        Console.ReadKey();
     }
 }
