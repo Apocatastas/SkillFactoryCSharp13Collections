@@ -1,39 +1,40 @@
 ﻿using System;
 using System.Collections;
 using System.Text;
+using SkillFactoryCSharp13Collections;
 
 class Program
 {
     static void Main(string[] args)
     {
-        int res = 0;
-        StringBuilder textRes = new StringBuilder();
+        var phoneBook = new List<Contact>();
+        phoneBook.Add(new Contact("Игорь", 79990000000, "igor@example.com"));
+        phoneBook.Add(new Contact("Андрей", 79990000001, "andrew@example.com"));
 
-        var elemList = new ArrayList()
-           {
-                13, 666, "var", "manowar", 16, 45, -13, "iron", " ", "maiden", 999, 71, 8
+        AddUnique(new Contact("Игорь", 79990066601, "igor2@example.com"),phoneBook);
 
-           };
-
-        foreach (var item in elemList)
+        foreach (var contact in phoneBook)
         {
-            if (item is int)
-            {
-                res += (int)item;
-            }
-            else if (item is string s)
-            {
-                textRes.Append(item);
-            }
-        }
-
-        var finalRes = new ArrayList() { res, textRes.ToString() };
-
-        foreach (var item in finalRes)
-        {
-            Console.WriteLine(item);
+            Console.WriteLine(contact.Name + ": " + contact.PhoneNumber);
         }
 
         Console.ReadKey();
+    }
+
+    private static void AddUnique(Contact newContact, List<Contact> phoneBook)
+    {
+        bool alreadyExists = false;
+        foreach (var contact in phoneBook)
+        {
+            if (contact.Name == newContact.Name)
+            {
+                alreadyExists = true;
+                break;
+            }
+        }
+
+        if (!alreadyExists)
+            phoneBook.Add(newContact);
+        phoneBook.Sort((x, y) => String.Compare(x.Name, y.Name, StringComparison.Ordinal));
     }
 }
