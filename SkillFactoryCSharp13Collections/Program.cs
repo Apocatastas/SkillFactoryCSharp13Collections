@@ -1,27 +1,37 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 
 class Program
 {
     static void Main(string[] args)
     {
-        try
+        var months = new[]
         {
-            // читаем весь файл с рабочего стола в строку текста
-            string text = File.ReadAllText("../../../Resources/cdev_Text.txt");
+            "Jan", "Feb", "Mar", "Apr", "May" , "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        };
 
-            // Сохраняем символы-разделители в массив
-            char[] delimiters = new char[] { ' ', '\r', '\n' };
-
-            // разбиваем нашу строку текста, используя ранее перечисленные символы-разделители
-            var words = text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-            // выводим количество
-            Console.WriteLine(words.Length);
-        }
-        catch (Exception ex)
+        var numbers = new[]
         {
-            Console.WriteLine(ex.Message);
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+        };
+
+        var monthList = new ArrayList();
+
+        foreach (var index in numbers)
+        {
+            // добавляем в ArrayList строку месяца (начинаем с нулевого по индексу)
+            monthList.Add(months[index - 1]);
+
+            // добавляем его порядковый номер
+            monthList.Add(index);
         }
+
+        foreach (var value in monthList)
+        {
+            Console.WriteLine(value);
+        };
+            
         Console.ReadKey();
     }
 }
