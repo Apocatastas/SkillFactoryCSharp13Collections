@@ -1,35 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Text;
+﻿using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var months = new List<string>()
-        {
-            "Jan", "Feb", "Mar", "Apr", "May"
-        };
-
-        var missing = new ArrayList()
-        {
-            1, 2, 3, 5, "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        };
-
-        GetMissing(months, missing);
-
-        foreach (var month in months)
-        {
-            Console.WriteLine(month);
-        }
-            
-        Console.ReadKey();
-    }
-
-    private static void GetMissing(List<string> months, ArrayList missing)
-    {
-        var missedArray = new string[7];
-        missing.GetRange(4, 7).CopyTo(missedArray);
-        months.AddRange(missedArray);
+        string sentence = "Подсчитайте, сколько уникальных символов в этом предложении, используя HashSet<T>, учитывая знаки препинания, но не учитывая пробелы в начале и в конце предложения.";
+        var characters = sentence.ToCharArray();
+        var symbols = new HashSet<char>();
+        foreach (var symbol in characters)
+            symbols.Add(symbol);
+        Console.WriteLine(symbols.Count);
     }
 }
