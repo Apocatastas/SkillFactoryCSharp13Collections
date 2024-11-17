@@ -1,37 +1,39 @@
 ﻿using System;
 using System.Collections;
-using System.IO;
+using System.Text;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var months = new[]
+        int res = 0;
+        StringBuilder textRes = new StringBuilder();
+
+        var elemList = new ArrayList()
+           {
+                13, 666, "var", "manowar", 16, 45, -13, "iron", " ", "maiden", 999, 71, 8
+
+           };
+
+        foreach (var item in elemList)
         {
-            "Jan", "Feb", "Mar", "Apr", "May" , "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        };
-
-        var numbers = new[]
-        {
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-        };
-
-        var monthList = new ArrayList();
-
-        foreach (var index in numbers)
-        {
-            // добавляем в ArrayList строку месяца (начинаем с нулевого по индексу)
-            monthList.Add(months[index - 1]);
-
-            // добавляем его порядковый номер
-            monthList.Add(index);
+            if (item is int)
+            {
+                res += (int)item;
+            }
+            else if (item is string s)
+            {
+                textRes.Append(item);
+            }
         }
 
-        foreach (var value in monthList)
+        var finalRes = new ArrayList() { res, textRes.ToString() };
+
+        foreach (var item in finalRes)
         {
-            Console.WriteLine(value);
-        };
-            
+            Console.WriteLine(item);
+        }
+
         Console.ReadKey();
     }
 }
