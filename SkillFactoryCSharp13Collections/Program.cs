@@ -1,30 +1,45 @@
 ﻿using System.Collections.Generic;
+using SkillFactoryCSharp13Collections;
 
 class Program
 {
+    private static Dictionary<string, Contact> PhoneBook = new Dictionary<String, Contact>()
+    {
+        ["Ozzy"] = new Contact(12345678900, "ozzy@black-sabbath.com"),
+        ["Mike"] = new Contact(12345678901, "Mike@rolling-stones.com"),
+    };
+
+    /// <summary>
+    /// Программа при запуске  должна :
+    /// 1. Вывести существующие контакты с номерами телефонов(на старте должно храниться 2).
+    /// 2. Добавить новый контакт.
+    /// 3. Вывести обновлённый список.
+    /// 4. Изменить у вновь добавленного контакта номер телефона.
+    /// 5. Снова вывести весь список.
+    /// </summary>
+    /// <param name="args"></param>
     static void Main(string[] args)
     {
-        // Запускаем бесконечный цикл
-        while (true)
+        Console.WriteLine("Текущий список контактов: ");
+        PrintContacts();
+        PhoneBook.TryAdd("Lemmy", new Contact(12345678902, "lemmy@motorhead.com"));
+        Console.WriteLine("Обновленный список контактов: ");
+        PrintContacts();
+        if (PhoneBook.TryGetValue("Lemmy", out Contact contact))
         {
-            Console.WriteLine("Введите текст:");
-            var sentence = Console.ReadLine();
-            var characters = sentence.ToCharArray();
-            var symbols = new HashSet<char>();
-
-            foreach (var symbol in characters)
-                symbols.Add(symbol);
-            Console.WriteLine($"Всего {symbols.Count} уникальных символов");
-
-            var signs = new[] { ',', ' ', '.' };
-            var numbers = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-            bool containsNumbers = symbols.Overlaps(numbers);
-            Console.WriteLine($"Коллекция содержит цифры: {containsNumbers}");
-
-            symbols.ExceptWith(signs);
-            Console.WriteLine($"Символов без знаков препинания:: {symbols.Count}");
-            Console.WriteLine();
+            contact.PhoneNumber = 12345678903;
         }
+        Console.WriteLine("Список после изменения: ");
+        PrintContacts();
+        Console.ReadKey();
+    }
+
+    public static void PrintContacts()
+    {
+        foreach (var contact in PhoneBook)
+            Console.WriteLine(contact.Key + ": " + contact.Value.PhoneNumber);
+        Console.WriteLine();
     }
 }
+
+
