@@ -1,39 +1,40 @@
-﻿using System.Collections.Generic;
-using SkillFactoryCSharp13Collections;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
 
 class Program
 {
-    private static SortedDictionary<string, Contact> PhoneBook = new SortedDictionary<String, Contact>()
-    {
-        ["Ozzy"] = new Contact(12345678900, "ozzy@black-sabbath.com"),
-        ["Mike"] = new Contact(12345678901, "Mike@rolling-stones.com"),
-    };
+    public static Stack<string> words = new Stack<string>();
 
     static void Main(string[] args)
     {
-        Console.WriteLine("Текущий список контактов: ");
-        PrintContacts();
-        var watchTwo = Stopwatch.StartNew();
-        PhoneBook.TryAdd("Lemmy", new Contact(12345678902, "lemmy@motorhead.com"));
-        Console.WriteLine($"Вставка в  словарь: {watchTwo.Elapsed.TotalMilliseconds}  мс");
-        Console.WriteLine("Обновленный список контактов: ");
-        PrintContacts();
-        if (PhoneBook.TryGetValue("Lemmy", out Contact contact))
-        {
-            contact.PhoneNumber = 12345678903;
-        }
-        Console.WriteLine("Список после изменения: ");
-        PrintContacts();
-        Console.ReadKey();
-    }
-
-    public static void PrintContacts()
-    {
-        foreach (var contact in PhoneBook)
-            Console.WriteLine(contact.Key + ": " + contact.Value.PhoneNumber);
+        Console.WriteLine("Введите слово и нажмите Enter, чтобы добавить его в стек.");
         Console.WriteLine();
+
+        while (true)
+        {
+            var input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "pop":
+                    words.TryPop(out string popResult);
+                    break;
+                case "peek":
+                    Console.WriteLine("Результат команды peek:" + words.TryPeek(out string peekResult) + " " +  peekResult);
+                    break;
+                default:
+                    words.Push(input);
+                    break;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("В стеке:");
+
+            foreach (var word in words)
+            {
+                Console.WriteLine(" " + word);
+            }
+        }
     }
 }
-
 
