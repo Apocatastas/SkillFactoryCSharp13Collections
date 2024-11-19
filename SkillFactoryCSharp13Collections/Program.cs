@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 class Program
 {
-    private static Dictionary<string, Contact> PhoneBook = new Dictionary<String, Contact>()
+    private static SortedDictionary<string, Contact> PhoneBook = new SortedDictionary<String, Contact>()
     {
         ["Ozzy"] = new Contact(12345678900, "ozzy@black-sabbath.com"),
         ["Mike"] = new Contact(12345678901, "Mike@rolling-stones.com"),
