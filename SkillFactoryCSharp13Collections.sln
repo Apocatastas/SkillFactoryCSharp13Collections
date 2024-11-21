@@ -5,6 +5,10 @@ VisualStudioVersion = 25.0.1706.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillFactoryCSharp13Collections", "SkillFactoryCSharp13Collections\SkillFactoryCSharp13Collections.csproj", "{4B1B8028-738B-469D-84E0-0F2DB27D7C80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-13-6-1", "Task-13-6-1\Task-13-6-1.csproj", "{EDD750F5-DE88-445B-9BC4-000E230AD2D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-13-6-2", "Task-13-6-2\Task-13-6-2.csproj", "{339B6ED3-239A-4AF7-B017-C810D12A5F7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4B1B8028-738B-469D-84E0-0F2DB27D7C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B1B8028-738B-469D-84E0-0F2DB27D7C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B1B8028-738B-469D-84E0-0F2DB27D7C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD750F5-DE88-445B-9BC4-000E230AD2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD750F5-DE88-445B-9BC4-000E230AD2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD750F5-DE88-445B-9BC4-000E230AD2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD750F5-DE88-445B-9BC4-000E230AD2D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339B6ED3-239A-4AF7-B017-C810D12A5F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339B6ED3-239A-4AF7-B017-C810D12A5F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339B6ED3-239A-4AF7-B017-C810D12A5F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339B6ED3-239A-4AF7-B017-C810D12A5F7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
